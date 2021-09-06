@@ -1,0 +1,434 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/icons/spell-book-small.png" type="Texture" id=1]
+[ext_resource path="res://src/scripts/SaveLoadList.gd" type="Script" id=2]
+[ext_resource path="res://assets/icons/tabletop-players-small.png" type="Texture" id=3]
+[ext_resource path="res://assets/icons/vampire-dracula-small.png" type="Texture" id=4]
+[ext_resource path="res://src/scenes/InitiativeEntry.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/icons/save-arrow-small.png" type="Texture" id=6]
+[ext_resource path="res://src/scripts/InitiativeList.gd" type="Script" id=7]
+[ext_resource path="res://assets/icons/health-normal-very-small.png" type="Texture" id=8]
+[ext_resource path="res://assets/icons/health-normal-clicked-very-small.png" type="Texture" id=9]
+[ext_resource path="res://assets/icons/cancel-very-small.png" type="Texture" id=10]
+[ext_resource path="res://assets/icons/cancel-clicked-very-small.png" type="Texture" id=11]
+
+[node name="AppContainer" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 593.0
+margin_bottom = 543.0
+split_offset = 450
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer"]
+margin_right = 586.0
+margin_bottom = 536.0
+dragger_visibility = 2
+
+[node name="OptionsPanelContainer" type="PanelContainer" parent="VSplitContainer/HSplitContainer"]
+margin_right = 114.0
+margin_bottom = 536.0
+
+[node name="OptionsList" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 107.0
+margin_bottom = 529.0
+size_flags_horizontal = 0
+custom_constants/separation = 16
+
+[node name="InitiativeContainer" type="PanelContainer" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList"]
+margin_right = 100.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 100, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InitiativeListButton" type="Button" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/InitiativeContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 93.0
+margin_bottom = 27.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/InitiativeContainer/InitiativeListButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+text = "Initiative"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveLoadContainer" type="PanelContainer" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList"]
+margin_top = 50.0
+margin_right = 100.0
+margin_bottom = 84.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveLoadButton" type="Button" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/SaveLoadContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 93.0
+margin_bottom = 27.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/SaveLoadContainer/SaveLoadButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+text = "Save/Load"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharactersContainer" type="PanelContainer" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList"]
+visible = false
+margin_top = 94.0
+margin_right = 155.0
+margin_bottom = 172.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/CharactersContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 148.0
+margin_bottom = 71.0
+custom_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/CharactersContainer/HBoxContainer2"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/CharactersContainer/HBoxContainer2"]
+margin_left = 74.0
+margin_top = 25.0
+margin_right = 141.0
+margin_bottom = 39.0
+text = "Characters"
+align = 1
+
+[node name="SpellsContainer" type="PanelContainer" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList"]
+visible = false
+margin_top = 94.0
+margin_right = 152.0
+margin_bottom = 172.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/SpellsContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 145.0
+margin_bottom = 71.0
+custom_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/SpellsContainer/HBoxContainer2"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/SpellsContainer/HBoxContainer2"]
+margin_left = 74.0
+margin_top = 25.0
+margin_right = 112.0
+margin_bottom = 39.0
+text = "Spells"
+align = 1
+
+[node name="MonstersContainer" type="PanelContainer" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList"]
+visible = false
+margin_top = 94.0
+margin_right = 152.0
+margin_bottom = 172.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/MonstersContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 145.0
+margin_bottom = 71.0
+custom_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/MonstersContainer/HBoxContainer2"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/MonstersContainer/HBoxContainer2"]
+margin_left = 74.0
+margin_top = 25.0
+margin_right = 134.0
+margin_bottom = 39.0
+text = "Monsters"
+align = 1
+
+[node name="SavedEncountersContainer" type="PanelContainer" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList"]
+visible = false
+margin_top = 100.0
+margin_right = 152.0
+margin_bottom = 178.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/SavedEncountersContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 145.0
+margin_bottom = 71.0
+custom_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/SavedEncountersContainer/HBoxContainer2"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/SavedEncountersContainer/HBoxContainer2"]
+margin_left = 74.0
+margin_top = 16.0
+margin_right = 138.0
+margin_bottom = 47.0
+text = "Saved
+Initiatives"
+align = 1
+
+[node name="FeaturePanelContainer" type="PanelContainer" parent="VSplitContainer/HSplitContainer"]
+margin_left = 114.0
+margin_right = 586.0
+margin_bottom = 536.0
+
+[node name="InitiativeList" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer" groups=[
+"features",
+]]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 465.0
+margin_bottom = 529.0
+script = ExtResource( 7 )
+
+[node name="Header" type="PanelContainer" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList"]
+margin_right = 458.0
+margin_bottom = 44.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/Header"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 451.0
+margin_bottom = 37.0
+alignment = 1
+
+[node name="Initiative" type="Label" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/Header/HBoxContainer"]
+margin_left = 57.0
+margin_top = 8.0
+margin_right = 128.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 71, 0 )
+text = "Initiative"
+align = 1
+
+[node name="Name" type="Label" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/Header/HBoxContainer"]
+margin_left = 132.0
+margin_top = 8.0
+margin_right = 203.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 71, 0 )
+text = "Name"
+align = 1
+
+[node name="HP" type="Label" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/Header/HBoxContainer"]
+margin_left = 207.0
+margin_top = 8.0
+margin_right = 278.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 71, 0 )
+text = "HP"
+align = 1
+
+[node name="AC" type="Label" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/Header/HBoxContainer"]
+margin_left = 282.0
+margin_top = 8.0
+margin_right = 353.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 71, 0 )
+text = "AC"
+align = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/Header/HBoxContainer"]
+margin_left = 357.0
+margin_right = 387.0
+margin_bottom = 30.0
+size_flags_horizontal = 9
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteInitiativeListButton" type="TextureButton" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/Header/HBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 23.0
+margin_bottom = 23.0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
+
+[node name="InitiativeEntriesPanelContainer" type="PanelContainer" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList"]
+margin_top = 48.0
+margin_right = 458.0
+margin_bottom = 62.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/InitiativeEntriesPanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 451.0
+margin_bottom = 7.0
+alignment = 1
+
+[node name="InitiativeEntry" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/InitiativeEntriesPanelContainer/VBoxContainer" instance=ExtResource( 5 )]
+visible = false
+margin_right = 392.0
+margin_bottom = 44.0
+
+[node name="PanelContainer" type="PanelContainer" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList"]
+margin_top = 66.0
+margin_right = 458.0
+margin_bottom = 110.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 451.0
+margin_bottom = 37.0
+
+[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/PanelContainer/HBoxContainer"]
+margin_top = 8.0
+margin_right = 72.0
+margin_bottom = 22.0
+text = "New Entry: "
+
+[node name="NewInitiativeLineEdit" type="LineEdit" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/PanelContainer/HBoxContainer"]
+margin_left = 76.0
+margin_right = 410.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+text = "23 Theren 16 16"
+
+[node name="PanelContainer" type="PanelContainer" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/PanelContainer/HBoxContainer"]
+margin_left = 414.0
+margin_right = 444.0
+margin_bottom = 30.0
+
+[node name="TextureButton" type="TextureButton" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/PanelContainer/HBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 23.0
+margin_bottom = 23.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+stretch_mode = 3
+
+[node name="SaveLoadList" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer" groups=[
+"features",
+]]
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 465.0
+margin_bottom = 529.0
+script = ExtResource( 2 )
+
+[node name="SaveButton" type="Button" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/SaveLoadList"]
+margin_right = 458.0
+margin_bottom = 20.0
+
+[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/SaveLoadList/SaveButton"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -229.0
+margin_right = 229.0
+margin_bottom = 20.0
+text = "Save Current Initiative"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadButton" type="Button" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/SaveLoadList"]
+margin_top = 24.0
+margin_right = 458.0
+margin_bottom = 44.0
+
+[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/SaveLoadList/LoadButton"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -229.0
+margin_right = 229.0
+margin_bottom = 20.0
+text = "Load Saved Initiative"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/SaveLoadList"]
+visible = false
+margin_top = 24.0
+margin_right = 458.0
+margin_bottom = 66.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/SaveLoadList/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 451.0
+margin_bottom = 35.0
+
+[node name="Header" type="PanelContainer" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/SaveLoadList/PanelContainer/VBoxContainer"]
+margin_right = 444.0
+margin_bottom = 28.0
+
+[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/FeaturePanelContainer/SaveLoadList/PanelContainer/VBoxContainer/Header"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 437.0
+margin_bottom = 21.0
+text = "Choose Initiative to Load"
+align = 1
+valign = 1
+
+[node name="TextContainer" type="PanelContainer" parent="VSplitContainer"]
+visible = false
+margin_top = 498.0
+margin_right = 586.0
+margin_bottom = 536.0
+rect_min_size = Vector2( 545, 35 )
+
+[node name="TextEdit" type="TextEdit" parent="VSplitContainer/TextContainer"]
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 538.0
+margin_bottom = 31.0
+caret_blink = true
+
+[node name="LineEdit" type="LineEdit" parent="VSplitContainer/TextContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 579.0
+margin_bottom = 31.0
+clear_button_enabled = true
+
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/InitiativeContainer/InitiativeListButton" to="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList" method="_on_InitiativeListButton_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/OptionsPanelContainer/OptionsList/SaveLoadContainer/SaveLoadButton" to="VSplitContainer/HSplitContainer/FeaturePanelContainer/SaveLoadList" method="_on_SaveLoadButton_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/Header/HBoxContainer/PanelContainer/DeleteInitiativeListButton" to="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList" method="_on_DeleteInitiativeListButton_pressed"]
+[connection signal="text_entered" from="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/PanelContainer/HBoxContainer/NewInitiativeLineEdit" to="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList" method="_on_LineEdit_text_entered"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList/PanelContainer/HBoxContainer/PanelContainer/TextureButton" to="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList" method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/FeaturePanelContainer/SaveLoadList/SaveButton" to="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList" method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/FeaturePanelContainer/SaveLoadList/LoadButton" to="VSplitContainer/HSplitContainer/FeaturePanelContainer/InitiativeList" method="_on_SaveButton_pressed"]
